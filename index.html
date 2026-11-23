@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SynBio Oxford | The Oxford University Society of Synthetic Biology</title>
+<meta name="description" content="SynBio Oxford has been at the heart of Oxford's genetic engineering community since 2016. Talks, hackathons, socials and iGEM.">
+<meta name="theme-color" content="#f3f0e7">
+<meta property="og:title" content="SynBio Oxford">
+<meta property="og:description" content="The Oxford University Society of Synthetic Biology.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oxfordsynbio.github.io/">
+<meta property="og:image" content="https://oxfordsynbio.github.io/assets/img/logo.jpg">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Background: the gene for green fluorescent protein. See main.js. -->
+<canvas id="genome" aria-hidden="true"></canvas>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="topbar">
+  <div class="wrap top-in">
+    <a class="brand" href="#top" aria-label="The Oxford University Society of Synthetic Biology, back to top">
+      <img src="assets/img/logo.jpg" width="48" height="48" alt="">
+      <span>The Oxford University Society of Synthetic Biology</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#igem">iGEM</a>
+      <a href="#join">Join</a>
+      <a href="#members">Members</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================== HERO ============================== -->
+<section class="band" id="top">
+  <!-- The reel: six short clips cut together, 12 seconds, no sound. Built from the footage in assets/stock-vids. -->
+  <video class="band-video" autoplay muted loop playsinline preload="auto" poster="assets/video/reel-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="assets/video/reel-small.mp4" type="video/mp4" media="(max-width: 760px)">
+    <source src="assets/video/reel.mp4" type="video/mp4">
+  </video>
+  <div class="hero wrap">
+    <h1>Cells can be programmed.</h1>
+    <p class="lede">At the heart of Oxford's genetic engineering community since 2016.</p>
+  </div>
+</section>
+
+<!-- ============================== WHAT WE DO ============================== -->
+<section class="intro wrap">
+  <div class="pitch">
+    <p>We run talks, hackathons and socials, and we are building a community of people who engineer biology, in Oxford and internationally.</p>
+    <a class="btn btn-solid btn-big" href="#join">Join</a>
+  </div>
+
+  <!-- An E. coli cell carrying the repressilator, a three-gene clock. The plot below it is the real model, solved live by main.js. -->
+  <figure class="fig" id="repressilator">
+    <svg class="circuit" viewBox="0 0 480 190" role="img" aria-labelledby="circ-title">
+      <title id="circ-title">An E. coli cell carrying a three-gene circuit: lacI switches off tetR, tetR switches off cI, and cI switches off lacI, so the cell oscillates.</title>
+      <!-- flagella -->
+      <g class="flagella">
+        <path d="M54 81 q-6 -9 -12 0 t-12 0 t-12 0 t-12 0"/>
+        <path d="M50 95 q-6 9 -12 0 t-12 0 t-12 0 t-12 0"/>
+        <path d="M54 109 q-6 -9 -12 0 t-12 0 t-12 0 t-12 0"/>
+      </g>
+      <!-- pili -->
+      <g class="pili">
+        <path d="M150 20 l-3 -10"/><path d="M212 20 l2 -11"/><path d="M286 20 l-2 -10"/><path d="M352 20 l3 -11"/>
+        <path d="M176 170 l-2 10"/><path d="M246 170 l3 11"/><path d="M318 170 l-3 10"/><path d="M384 170 l2 10"/>
+        <path d="M466 74 l10 -5"/><path d="M469 104 l10 3"/>
+      </g>
+      <!-- cell: the fill follows the simulated LacI level -->
+      <path class="cell-wall" d="M125 20 H395 A75 75 0 0 1 395 170 H125 A75 75 0 0 1 125 20 Z"/>
+      <path class="cell-fill" id="cell-fill" d="M125 20 H395 A75 75 0 0 1 395 170 H125 A75 75 0 0 1 125 20 Z"/>
+      <path class="cell-inner" d="M125 27 H395 A68 68 0 0 1 395 163 H125 A68 68 0 0 1 125 27 Z"/>
+      <!-- the circuit inside it -->
+      <g transform="translate(90 47) scale(0.85)">
+        <g class="rep">
+          <path d="M88 69 V40 H150 V50"/><path d="M142 50 H158"/>
+          <path d="M213 69 V40 H275 V50"/><path d="M267 50 H283"/>
+          <path d="M338 69 V18 H25 V50"/><path d="M17 50 H33"/>
+        </g>
+        <path class="dna" d="M5 80 H395"/>
+        <g class="prom">
+          <path d="M25 80 V58 H41"/><path class="head" d="M41 54 L48 58 L41 62 Z"/>
+          <path d="M150 80 V58 H166"/><path class="head" d="M166 54 L173 58 L166 62 Z"/>
+          <path d="M275 80 V58 H291"/><path class="head" d="M291 54 L298 58 L291 62 Z"/>
+        </g>
+        <path class="cds s0" data-gene="0" d="M53 69 H109 L123 80 L109 91 H53 Z"/>
+        <path class="cds s1" data-gene="1" d="M178 69 H234 L248 80 L234 91 H178 Z"/>
+        <path class="cds s2" data-gene="2" d="M303 69 H359 L373 80 L359 91 H303 Z"/>
+        <path class="cds-line" d="M53 69 H109 L123 80 L109 91 H53 Z"/>
+        <path class="cds-line" d="M178 69 H234 L248 80 L234 91 H178 Z"/>
+        <path class="cds-line" d="M303 69 H359 L373 80 L359 91 H303 Z"/>
+        <g class="gene">
+          <text x="88" y="113">lacI</text>
+          <text x="213" y="113">tetR</text>
+          <text x="338" y="113">cI</text>
+        </g>
+      </g>
+    </svg>
+
+    <div class="plot">
+      <div class="plot-head">
+        <span><i>E. coli</i>, protein per cell</span>
+        <span class="legend">
+          <span class="key k0">LacI</span>
+          <span class="key k1">TetR</span>
+          <span class="key k2">λ cI</span>
+        </span>
+      </div>
+      <canvas id="trace" height="170" aria-hidden="true"></canvas>
+    </div>
+  </figure>
+
+  <ol class="ledger" aria-label="Milestones in engineered biology">
+    <li><b>1982</b><span>Insulin from bacteria</span></li>
+    <li><b>2000</b><span>First gene circuits</span></li>
+    <li><b>2013</b><span>Malaria drug from yeast</span></li>
+    <li><b>2017</b><span>CAR-T cancer therapy</span></li>
+    <li><b>2023</b><span>CRISPR therapy approved</span></li>
+  </ol>
+</section>
+
+<!-- ============================== iGEM ============================== -->
+<section class="igem wrap" id="igem">
+  <div class="igem-top">
+    <img src="assets/img/igem/2026-team-jamboree.jpg" width="1600" height="1204" alt="The 2026 Oxford iGEM team in front of the iGEM stage in Paris, holding the Best Agriculture Project trophy" loading="lazy">
+    <div class="igem-card">
+      <h2>iGEM</h2>
+      <p><b>iGEM</b> is the world's largest genetic engineering competition, where student teams spend a summer building an engineered organism.</p>
+      <p>Every Oxford team has won a medal, and in 2026 we won <b>Best Agriculture Project</b> out of 463 teams.</p>
+      <p class="linkrow">
+        <a href="https://2026.igem.wiki/oxford">Our 2026 project, NECTAR</a>
+        <a href="https://igem.org">igem.org</a>
+      </p>
+    </div>
+  </div>
+
+  <!--
+    RESULTS, newest first. One <tr> per team. Medals and prizes are taken from
+    iGEM's own records (jamboree.igem.org/YEAR/results and old.igem.org/Results).
+  -->
+  <details class="history">
+    <summary>Every Oxford iGEM project since 2014</summary>
+    <table>
+      <thead>
+        <tr><th scope="col">Year</th><th scope="col">Project</th><th scope="col">Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">2026</th><td><a href="https://2026.igem.wiki/oxford/">NECTAR</a><span>A programmable RNA pesticide to protect honey bees from Varroa mites.</span></td><td>Silver medal<b>Best Agriculture Project</b></td></tr>
+        <tr><th scope="row">2025</th><td><a href="https://2025.igem.wiki/oxford/">CASPER</a><span>A platform to detect and kill antibiotic-resistant bacteria.</span></td><td>Silver medal</td></tr>
+        <tr><th scope="row">2024</th><td><a href="https://2024.igem.wiki/oxford/">OneRing</a><span>A plasmid that spreads between bacteria and kills the antibiotic-resistant ones.</span></td><td>Gold medal</td></tr>
+        <tr><th scope="row">2023</th><td><a href="https://2023.igem.wiki/oxford/">Bac2Glow</a><span>A protein biosensor that lights up when drinking water is contaminated.</span></td><td>Silver medal</td></tr>
+        <tr><th scope="row">2019</th><td><a href="https://2019.igem.org/Team:Oxford">ProQuorum</a><span>A probiotic that senses <i>C. difficile</i> and kills it.</span></td><td>Gold medal</td></tr>
+        <tr><th scope="row">2018</th><td><a href="https://2018.igem.org/Team:Oxford">miBiome</a><span>An engineered probiotic to treat inflammatory bowel disease.</span></td><td>Gold medal<b>Best Therapeutics Project</b></td></tr>
+        <tr><th scope="row">2017</th><td><a href="https://2017.igem.org/Team:Oxford">See cruzi</a><span>A cheap, portable test for Chagas disease.</span></td><td>Gold medal<b>Best Diagnostics Project</b></td></tr>
+        <tr><th scope="row">2016</th><td><a href="https://2016.igem.org/Team:Oxford">Cure for Cu</a><span>A probiotic that mops up copper, to treat Wilson's disease.</span></td><td>Gold medal</td></tr>
+        <tr><th scope="row">2015</th><td><a href="https://2015.igem.org/Team:Oxford">Oxford 2015</a><span><i>E. coli</i> that secrete proteins to break up biofilms and kill the bacteria inside.</span></td><td>Gold medal</td></tr>
+        <tr><th scope="row">2014</th><td><a href="https://2014.igem.org/Team:Oxford">DCMation</a><span>Bacteria that detect and break down the solvent dichloromethane.</span></td><td>Gold medal</td></tr>
+      </tbody>
+    </table>
+  </details>
+</section>
+
+<!-- ============================== JOIN ============================== -->
+<section class="band" id="join">
+  <!-- The reel: six short clips cut together, 12 seconds, no sound. Built from the footage in assets/stock-vids. -->
+  <video class="band-video" data-lazy muted loop playsinline preload="none" poster="assets/video/reel-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="assets/video/reel-small.mp4" type="video/mp4" media="(max-width: 760px)">
+    <source src="assets/video/reel.mp4" type="video/mp4">
+  </video>
+<div class="sec wrap">
+  <header class="sec-head">
+    <h2>Join</h2>
+  </header>
+  <div class="sec-body">
+    <p class="big">Joining is free, and you do not need to study biology.</p>
+
+    <!--
+      MAILCHIMP SIGNUP
+      main.js sends this form to Mailchimp in the background and shows the
+      answer here, without leaving the page. data-fid is the f_id value from
+      Mailchimp's embedded form code (Audience, Signup forms, Embedded form).
+      data-mc on each field is its name in that embedded form.
+      The two extra questions stay hidden unless Mailchimp says it needs them.
+      If the background request cannot be made, the form opens our Mailchimp
+      signup page with the address already filled in.
+    -->
+    <form class="signup" id="signup" action="https://synbio-oxford.us9.list-manage.com/subscribe" method="get" data-fid="0060d7e3f0">
+      <input type="hidden" name="u" value="13b0c7a3decafeca4acfd47f6">
+      <input type="hidden" name="id" value="699d2ef197">
+      <div class="field wide">
+        <label for="su-email">Mailing list</label>
+        <div class="signup-row">
+          <input type="email" id="su-email" name="MERGE0" data-mc="EMAIL" required autocomplete="email" placeholder="you@ox.ac.uk">
+          <button class="btn btn-solid" type="submit">Subscribe</button>
+        </div>
+      </div>
+      <div class="field extra" hidden>
+        <label for="su-position">You are</label>
+        <select id="su-position" name="MERGE3" data-mc="MMERGE3">
+          <option value="" selected>Choose one</option>
+          <option>Undergraduate</option>
+          <option>Master's student</option>
+          <option>DPhil student</option>
+          <option>Postdoc</option>
+          <option>Academic or research staff</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field extra" hidden>
+        <label for="su-area">Subject or research area</label>
+        <input type="text" id="su-area" name="MERGE4" data-mc="MMERGE4" maxlength="120" placeholder="Biochemistry">
+      </div>
+      <p class="signup-msg wide" id="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="join-links">
+      <!-- WHATSAPP: switched off until there is an invite link. To switch it on, put the link in
+           the href below (WhatsApp: Group info, Invite via link) and delete this comment's two marker lines.
+      <a class="btn" href="https://chat.whatsapp.com/REPLACE-WITH-INVITE-CODE">WhatsApp group</a>
+      -->
+      <a class="btn" href="https://www.instagram.com/oxford_igem/">Instagram @oxford_igem</a>
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- ============================== MEMBERS ============================== -->
+<section class="sec wrap" id="members">
+  <header class="sec-head">
+    <h2>Society members</h2>
+  </header>
+  <div class="sec-body">
+    <!--
+      HOW TO EDIT
+      One <div class="row"> per person. A line under the name is optional:
+        <dd><b>Name</b><span>Course, College</span></dd>
+      To add a photo, put a square image in assets/img/people/ and add
+        <img src="assets/img/people/name.jpg" width="72" height="72" alt="">
+      as the first thing inside the row.
+    -->
+    <dl class="roster">
+      <div class="row"><dt>President</dt><dd><b>David Theodor Nimrichtr</b></dd></div>
+      <div class="row"><dt>Treasurer</dt><dd><b>Frederick Katzenellenbogen</b></dd></div>
+    </dl>
+    <p class="soon">Committee applications opening soon...</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="foot-name">SynBio Oxford</p>
+    <p class="foot-links">
+      <a href="mailto:syntheticbiologyoxford@gmail.com">syntheticbiologyoxford@gmail.com</a>
+      <a href="https://www.instagram.com/oxford_igem/">Instagram</a>
+    </p>
+    <p class="fine">© 2026 The Oxford University Society of Synthetic Biology</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
