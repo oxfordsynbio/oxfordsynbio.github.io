@@ -362,26 +362,46 @@
 })();
 
 /* ---------- Video reel ----------
-   The reel behind the hero and the join section plays only while it is on
-   screen, and not at all for people who have asked for reduced motion.
+   The reels behind the hero and the join section play whenever they are on
+   screen, on every device. This deliberately ignores the "reduce motion"
+   setting, at the society's request.
+   Some phones will not start a video by themselves (iPhone Low Power Mode,
+   Android data saver). There, the first touch anywhere on the page starts it,
+   because a touch is the one thing those modes accept.
 */
 (function () {
-  var videos = document.querySelectorAll('.band-video');
+  var videos = Array.prototype.slice.call(document.querySelectorAll('.band-video'));
   if (!videos.length) return;
+  var inView = [];
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    Array.prototype.forEach.call(videos, function (v) { v.removeAttribute('autoplay'); v.pause(); });
-    return;
+  function play(v) {
+    v.muted = true;                       // phones only start video that is muted
+    v.playsInline = true;
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
   }
-  function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  function playVisible() {
+    inView.forEach(function (v) { if (v.paused) play(v); });
+  }
 
-  if (!('IntersectionObserver' in window)) { Array.prototype.forEach.call(videos, play); return; }
-  var watch = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) play(entry.target); else entry.target.pause();
-    });
-  }, { rootMargin: '100px' });
-  Array.prototype.forEach.call(videos, function (v) { watch.observe(v); });
+  if ('IntersectionObserver' in window) {
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target, at = inView.indexOf(v);
+        if (entry.isIntersecting) { if (at < 0) inView.push(v); play(v); }
+        else { if (at >= 0) inView.splice(at, 1); v.pause(); }
+      });
+    }, { rootMargin: '100px' });
+    videos.forEach(function (v) { watch.observe(v); });
+  } else {
+    inView = videos.slice();
+    playVisible();
+  }
+
+  ['touchend', 'click', 'keydown'].forEach(function (type) {
+    window.addEventListener(type, playVisible, { passive: true });
+  });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) playVisible(); });
 })();
 
 /* ---------- Header ----------
