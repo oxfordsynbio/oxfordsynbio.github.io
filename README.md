@@ -11,7 +11,7 @@ It is plain HTML, CSS and one small script. There is nothing to install or build
 - `main.js`: the live plot in the hero figure.
 - `assets/video/reel.mp4`: the 12 second video behind the hero and the join section, cut from the clips in `assets/stock-vids/` (kept out of git because they are large).
 - `assets/img/igem/`: iGEM photos.
-- `assets/img/people/`: member photos.
+- `assets/img/people/`: committee photos.
 - `assets/fonts/`: Newsreader and IBM Plex, self-hosted (SIL Open Font License).
 
 ## Previewing on your own computer
@@ -24,5 +24,5 @@ then open http://localhost:8000.
 
 - **iGEM photo**: replace `assets/img/igem/2026-team-jamboree.jpg`, or change the `<img>` in the iGEM section of `index.html`.
 - **iGEM results**: add a `<tr>` to the table in the iGEM section.
-- **A new member**: copy a `<div class="row">` line in the members section.
+- **A new committee member**: copy a `<div class="row">` line in the committee section.
 - **WhatsApp button**: it is switched off until there is an invite link. Search `index.html` for `REPLACE-WITH-INVITE-CODE` and follow the comment there.

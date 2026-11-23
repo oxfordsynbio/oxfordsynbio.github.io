@@ -181,20 +181,29 @@ h1 {
   grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
   gap: 56px 64px;
   align-items: center;
-  padding-top: 72px;
+  padding-top: 64px;
   padding-bottom: 16px;
 }
 .pitch p { margin: 0 0 36px; font: 400 clamp(26px, 3.3vw, 42px)/1.2 var(--serif); letter-spacing: -0.015em; color: var(--blue); text-wrap: balance; }
-.btn-big { padding: 20px 44px; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
+.pitch .pitch-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; font: inherit; letter-spacing: 0; }
+.btn-big { padding: 20px 32px; font: 500 15px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
 
-/* what engineered biology has already done */
+/* ---------- timeline: an arrow through what engineered biology has done, and what comes next ---------- */
+
+.timeline { padding-top: 52px; }
 .ledger {
-  grid-column: 1 / -1;
-  list-style: none; margin: 0; padding: 12px 0 0;
-  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px;
-  border-top: 1px solid var(--ink);
+  position: relative;
+  list-style: none; margin: 0; padding: 18px 28px 0 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px;
+  border-top: 2px solid var(--blue);
 }
-.ledger li { font-size: 14px; line-height: 1.35; color: var(--ink-soft); }
+/* the arrowhead at the right-hand end of the line */
+.ledger::after { content: ""; position: absolute; top: -8px; right: -2px; border-left: 14px solid var(--blue); border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.ledger li { position: relative; font-size: 14px; line-height: 1.35; color: var(--ink-soft); }
+/* a tick on the line for each date; the last one is hollow because it has not happened yet */
+.ledger li::before { content: ""; position: absolute; top: -24px; left: 0; width: 10px; height: 10px; background: var(--blue); }
+.ledger li:last-child::before { background: var(--paper); border: 2px solid var(--blue); }
+.ledger li:last-child span { color: var(--ink); }
 .ledger b { display: block; font: 500 24px/1.15 var(--serif); letter-spacing: -0.01em; color: var(--blue); }
 
 /* ---------- section headings ---------- */
@@ -292,7 +301,7 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
 .band .signup-msg.bad { color: #ffc2b3; }
 .band .signup-done { border-color: var(--paper); color: var(--ink); }
 
-/* ---------- members ---------- */
+/* ---------- committee ---------- */
 
 .roster { margin: 0 0 24px; border-top: 1px solid var(--rule); }
 .row {
@@ -325,9 +334,6 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
 @media (max-width: 920px) {
   .hero { min-height: min(72vh, 620px); padding-top: 96px; padding-bottom: 48px; }
   .intro { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; padding-bottom: 0; }
-  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; }
-  .ledger li { display: flex; align-items: baseline; gap: 10px; }
-  .ledger b { font-size: 19px; }
   .igem { padding-top: 48px; padding-bottom: 48px; }
   .igem-top { display: block; }
   .igem-card { margin: 0; padding: 28px 24px 24px; }
@@ -344,7 +350,13 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
   #repressilator { padding: 14px 16px 14px; }
   #trace { height: 140px; }
   .legend { gap: 10px; }
-  .ledger { grid-template-columns: 1fr; gap: 6px; }
+  /* on a phone the arrow runs down the page instead of across it */
+  .timeline { padding-top: 36px; }
+  .ledger { grid-template-columns: 1fr; gap: 10px; padding: 0 0 26px 18px; border-top: 0; border-left: 2px solid var(--blue); }
+  .ledger::after { top: auto; right: auto; bottom: -2px; left: -8px; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 14px solid var(--blue); border-bottom: 0; }
+  .ledger li { display: flex; align-items: baseline; gap: 10px; }
+  .ledger li::before { top: 7px; left: -24px; }
+  .ledger b { font-size: 19px; min-width: 2.6em; }
   .row, .row:has(img) { grid-template-columns: 1fr; gap: 2px; }
   .row img { margin-bottom: 8px; }
   .signup { grid-template-columns: 1fr; }
