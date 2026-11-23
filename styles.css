@@ -17,7 +17,7 @@
   Motion    the video reel behind the hero and the join section, the live plot
             and cell in the hero, and the gene behind the page, which is
             translated into protein where the pointer passes over it.
-  Icons     none. Links are words.
+  Icons     two, drawn for this site: Instagram and WhatsApp, on their buttons.
   Spacing   multiples of 8px.
 */
 
@@ -283,17 +283,18 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
   background-image: linear-gradient(45deg, transparent 50%, var(--blue) 50%), linear-gradient(135deg, var(--blue) 50%, transparent 50%);
   background-position: calc(100% - 19px) 20px, calc(100% - 13px) 20px; background-size: 6px 6px; background-repeat: no-repeat; }
 .signup input::placeholder { color: #8b8899; }
-.signup-row { display: flex; }
-.signup-row input { flex: 1; border-right: 0 !important; }
-.signup-row .btn { flex: none; height: 46px; padding-top: 0; padding-bottom: 0; }
-.signup [hidden] { display: none; }
+.signup-end { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
+.signup-note { font: 400 12px/1.4 var(--mono); opacity: 0.85; }
 .signup-msg { margin: 0 !important; font-size: 15px; line-height: 1.45; }
 .signup-msg:empty { display: none; }
 .signup-msg.bad { color: var(--red); }
 .signup.busy button { opacity: 0.6; cursor: progress; }
 .signup-done { margin: 0; padding: 16px 18px; border: 1px solid var(--blue); background: #fbfaf5; max-width: 520px; }
 
-.join-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0 !important; }
+.join-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 0 !important; }
+/* the two small drawings on the Instagram and WhatsApp buttons */
+.btn svg { display: inline-block; width: 18px; height: 18px; margin: -4px 10px -4px 0; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.btn svg .dot { fill: currentColor; stroke: none; }
 
 /* the join form sits on the video band, so its controls are light on dark */
 .band .signup label { color: var(--paper); opacity: 0.85; }

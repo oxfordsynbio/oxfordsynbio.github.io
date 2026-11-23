@@ -285,7 +285,6 @@
   if (!fid) return;
 
   var ENDPOINT = form.action.replace(/\/subscribe\/?$/, '/subscribe/post-json');
-  var extras = form.querySelectorAll('.extra');
   var busy = false;
 
   // Mailchimp messages can contain links and a leading field number ("0 - ...").
@@ -300,18 +299,6 @@
   function say(text, bad) {
     msg.textContent = text;
     msg.className = 'signup-msg wide' + (bad ? ' bad' : '');
-  }
-
-  // Mailchimp wants the position and subject after all: show those two questions.
-  function askForMore() {
-    Array.prototype.forEach.call(extras, function (box) {
-      box.hidden = false;
-      var field = box.querySelector('[data-mc]');
-      if (field) field.required = true;
-    });
-    say('Two more details, then you are on the list.', false);
-    var first = extras[0] && extras[0].querySelector('[data-mc]');
-    if (first) first.focus();
   }
 
   form.addEventListener('submit', function (e) {
@@ -358,10 +345,15 @@
         form.parentNode.replaceChild(done, form);
         return;
       }
+      // Mailchimp starts a field error with the field's number: 0 email, 1 name, 2 surname, 3 position, 4 area.
       var raw = String((reply && reply.msg) || '');
       var which = raw.match(/^(\d+)\s*-/);
-      if (which && +which[1] >= 3 && extras[0] && extras[0].hidden) { askForMore(); return; }
-      say(plain(raw) || 'That did not work. Please try again.', true);
+      var fields = form.querySelectorAll('[data-mc]');
+      var field = which && fields[+which[1]];
+      var label = field && form.querySelector('label[for="' + field.id + '"]');
+      var text = plain(raw) || 'That did not work. Please try again.';
+      say(label && +which[1] > 0 ? label.textContent + ': ' + text : text, true);
+      if (field) field.focus();
     };
     script.onerror = fallback;
     script.src = ENDPOINT + '?' + params.join('&');
