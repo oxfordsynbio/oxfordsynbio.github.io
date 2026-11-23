@@ -1,4 +1,4 @@
-# SynBio Oxford website
+# Oxford SynBio website
 
 The site of the Oxford University Society of Synthetic Biology, served by GitHub Pages at https://oxfordsynbio.github.io/.
 

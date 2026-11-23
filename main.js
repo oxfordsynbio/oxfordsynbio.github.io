@@ -1,4 +1,4 @@
-/* SynBio Oxford. Five jobs: the live plot, the gene behind the page, the mailing list form, the video reel, and hiding the header on the way down. */
+/* Oxford SynBio. Five jobs: the live plot, the gene behind the page, the mailing list form, the video reel, and hiding the header on the way down. */
 
 /* ---------- Fig. 1: the repressilator ----------
    Model from Elowitz and Leibler, "A synthetic oscillatory network of
