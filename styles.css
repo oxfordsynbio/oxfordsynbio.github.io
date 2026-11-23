@@ -146,7 +146,8 @@ h1 {
 
 .fig { margin: 0; }
 .fig figcaption { margin-top: 12px; font: 400 12px/1.4 var(--mono); color: var(--ink-soft); }
-.fig figcaption b { font-weight: 500; color: var(--ink); margin-right: 6px; }
+.fig figcaption sup, .fine sup { font-size: 0.8em; line-height: 0; }
+.fig figcaption a { text-decoration: none; padding: 0 2px; }
 #repressilator { border: 1px solid var(--rule); background: var(--panel); padding: 20px 24px 20px; }
 
 .circuit { width: 100%; height: auto; }
@@ -329,7 +330,8 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
 .foot :focus-visible { outline-color: var(--paper); }
 .foot-name { font: 500 28px/1 var(--serif); letter-spacing: -0.02em; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 8px 28px; font: 400 14px/1.5 var(--mono); }
-.fine { flex-basis: 100%; margin-top: 16px !important; font: 400 12px/1.6 var(--mono); opacity: 0.75; }
+.fine { flex-basis: 100%; margin-top: 16px !important; font: 400 12px/1.6 var(--mono); opacity: 0.75; overflow-wrap: anywhere; }
+.fine + .fine { margin-top: 0 !important; }
 
 /* ---------- small screens ---------- */
 
@@ -347,6 +349,7 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
   :root { --gutter: 16px; }
   .brand img { width: 40px; height: 40px; }
   .top-in { gap: 12px; }
+  .top nav .wide { display: none; }   /* the menu says "Join" on phones so the society name has room */
   .brand { gap: 10px; flex: 1 1 auto; min-width: 0; }
   .brand span { font-size: 12.5px; max-width: 13.5em; }
   .top nav { gap: 14px; flex: none; font-size: 12px; }
