@@ -1,6 +1,6 @@
 # Oxford SynBio website
 
-The site of the Oxford University Society of Synthetic Biology, served by GitHub Pages at https://oxfordsynbio.github.io/.
+The site of the Oxford University Society of Synthetic Biology, served by GitHub Pages at https://oxfordsynbio.org/.
 
 It is plain HTML, CSS and one small script. There is nothing to install or build: edit a file, commit, push, and the site updates a minute later.
 
