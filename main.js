@@ -352,7 +352,7 @@
       var field = which && fields[+which[1]];
       var label = field && form.querySelector('label[for="' + field.id + '"]');
       var text = plain(raw) || 'That did not work. Please try again.';
-      say(label && +which[1] > 0 ? label.textContent + ': ' + text : text, true);
+      say(label && +which[1] > 0 ? label.textContent.replace(/\s*\*$/, '') + ': ' + text : text, true);
       if (field) field.focus();
     };
     script.onerror = fallback;

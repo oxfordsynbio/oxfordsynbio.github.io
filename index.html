@@ -197,7 +197,7 @@
       answer here, without leaving the page. data-fid is the f_id value from
       Mailchimp's embedded form code (Audience, Signup forms, Embedded form).
       data-mc on each field is its name in that embedded form.
-      Only the email is required. If the background request cannot be made,
+      Only the email is required (marked with an asterisk). If the background request cannot be made,
       the form opens our Mailchimp signup page with the answers filled in.
     -->
     <h3 class="form-title">Join the Mailing list</h3>
@@ -205,11 +205,11 @@
       <input type="hidden" name="u" value="13b0c7a3decafeca4acfd47f6">
       <input type="hidden" name="id" value="699d2ef197">
       <div class="field wide">
-        <label for="su-email">Email</label>
+        <label for="su-email">Email *</label>
         <input type="email" id="su-email" name="MERGE0" data-mc="EMAIL" required autocomplete="email" placeholder="you@ox.ac.uk">
       </div>
       <div class="field">
-        <label for="su-first">Name</label>
+        <label for="su-first">First Name</label>
         <input type="text" id="su-first" name="MERGE1" data-mc="FNAME" autocomplete="given-name" maxlength="80">
       </div>
       <div class="field">
@@ -234,7 +234,6 @@
       </div>
       <div class="field wide signup-end">
         <button class="btn btn-solid" type="submit">Subscribe</button>
-        <span class="signup-note">Only the email is required.</span>
       </div>
       <p class="signup-msg wide" id="signup-msg" role="status" aria-live="polite"></p>
     </form>
