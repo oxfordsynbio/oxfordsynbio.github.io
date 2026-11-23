@@ -225,6 +225,8 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
 }
 .igem-card h2 { color: var(--paper); margin-bottom: 20px; font-size: clamp(28px, 2.9vw, 38px); line-height: 1.1; text-wrap: balance; }
 .igem-card em { font: italic 400 1.08em/1 var(--serif); }
+.igem-card .igem-soon { margin-top: 20px; }
+.igem-card .igem-soon em { line-height: 1.35; }
 .igem-card p { margin: 0 0 12px; font-size: 18px; line-height: 1.5; }
 .igem-card b { font-weight: 600; }
 .igem-card a { color: var(--paper); }
