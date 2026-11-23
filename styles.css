@@ -119,6 +119,8 @@ button.btn { cursor: pointer; }
 .band h1, .band h2 { color: var(--paper); }
 .band :focus-visible { outline-color: var(--paper); }
 .band .sec::before { display: none; }
+/* extra height so the footage behind the join form has room to be seen */
+.band .sec { padding-top: 112px; padding-bottom: 128px; }
 .band + .sec::before { display: none; }
 
 /* ---------- hero: the reel, and the title over it ---------- */
@@ -338,6 +340,7 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
   .igem-top { display: block; }
   .igem-card { margin: 0; padding: 28px 24px 24px; }
   .sec { grid-template-columns: 1fr; gap: 24px; padding-top: 44px; padding-bottom: 52px; }
+  .band .sec { padding-top: 72px; padding-bottom: 88px; }
 }
 
 @media (max-width: 760px) {

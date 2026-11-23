@@ -9,7 +9,7 @@ It is plain HTML, CSS and one small script. There is nothing to install or build
 - `index.html`: all of the text. Each section has a comment saying how to edit it.
 - `styles.css`: the look. The palette, typefaces and other design decisions are written out at the top.
 - `main.js`: the live plot in the hero figure.
-- `assets/video/reel.mp4`: the 12 second video behind the hero and the join section, cut from the clips in `assets/stock-vids/` (kept out of git because they are large).
+- `assets/video/`: `reel.mp4` plays behind the hero and `reel-join.mp4` behind the join section. Each has a `-small` copy for phones and a `-poster.jpg` still. They are cut from the clips in `assets/stock-vids/`, which are kept out of git because they are large.
 - `assets/img/igem/`: iGEM photos.
 - `assets/img/people/`: committee photos.
 - `assets/fonts/`: Newsreader and IBM Plex, self-hosted (SIL Open Font License).
