@@ -25,4 +25,5 @@ then open http://localhost:8000.
 - **iGEM photo**: replace `assets/img/igem/2026-team-jamboree.jpg`, or change the `<img>` in the iGEM section of `index.html`.
 - **iGEM results**: add a `<tr>` to the table in the iGEM section.
 - **A new committee member**: copy a `<div class="row">` block in the committee section and put a square photo in `assets/img/people/`.
+- **Committee applications**: the button under the committee list and the short link `/apply` (`apply/index.html`, which forwards straight to the form) both point to the Google Form. To change the form, change the link in both files.
 - **WhatsApp button**: it is switched off until there is an invite link. Search `index.html` for `REPLACE-WITH-INVITE-CODE` and follow the comment there.
