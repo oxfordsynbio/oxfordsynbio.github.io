@@ -10,6 +10,8 @@
             blue    #272177  the blue of the society logo: headings, links, buttons, bands
             red     #b5432c  second data series (TetR), and error messages
             ochre   #8a6a12  third data series (cI), and nothing else
+            igem    #2ba946  the green of the iGEM logo: the iGEM apply button, and nothing else
+                             (#5aaa47, iGEM's lighter green, is its hover)
   Type      Newsreader for headings, IBM Plex Sans for text,
             IBM Plex Mono for labels and anything that reads like a sequence.
   Corners   square everywhere. The bacterium is the one exception, because it is one.
@@ -37,6 +39,8 @@
   --blue: #272177;
   --red: #b5432c;
   --ochre: #8a6a12;
+  --igem: #2ba946;
+  --igem-light: #5aaa47;
   --gutter: 32px;
 
   --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
@@ -141,6 +145,13 @@ h1 {
 }
 
 .lede { margin: 28px 0 0; max-width: 30em; font: 400 clamp(19px, 2vw, 24px)/1.4 var(--serif); }
+
+/* the apply buttons under the lede; normal case, so iGEM stays iGEM */
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 0; }
+.hero-actions .btn { padding: 18px 24px; font: 500 15px/1.25 var(--mono); }
+/* dark text on the green: white on it is too faint to read */
+.band .hero-actions .btn-igem { background: var(--igem); border-color: var(--igem); color: var(--ink); }
+.band .hero-actions .btn-igem:hover { background: var(--igem-light); border-color: var(--igem-light); color: var(--ink); }
 
 /* ---------- hero figure: E. coli carrying the repressilator ---------- */
 
@@ -352,6 +363,8 @@ h2 { margin: 0; font: 500 clamp(34px, 4vw, 48px)/1.05 var(--serif); letter-spaci
 @media (max-width: 760px) {
   :root { --gutter: 16px; }
   .brand img { width: 40px; height: 40px; }
+  .hero-actions { margin-top: 28px; }
+  .hero-actions .btn { padding: 16px 18px; font-size: 14px; }
   .top-in { gap: 12px; }
   .top nav .wide { display: none; }   /* the menu says "Join" on phones so the society name has room */
   .brand { gap: 10px; flex: 1 1 auto; min-width: 0; }
